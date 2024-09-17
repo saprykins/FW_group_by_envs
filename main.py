@@ -30,6 +30,8 @@ grouped = filtered_df.groupby('Environment')
 # Iterate through the groups and create separate excel files for each environment 
 for environment, group in grouped: 
     environment = environment.replace('/', ' - ').replace('?', ' - ').replace(':', ' - ').replace('\\', ' - ')
+    # env = env.replace('/', ' - ').replace('?', ' - ').replace(':', ' - ').replace('\\', ' - ')
+    # app = app.replace('/', ' - ').replace('?', ' - ').replace(':', ' - ').replace('\\', ' - ')
     output_file_name = environment + '.csv' 
     output_path = os.path.join(mydir,output_file_name) 
-    group[['Environment','Source server']].to_csv(output_path, index=False)
+    group[['Application', 'Env', 'Source server']].to_csv(output_path, index=False)
